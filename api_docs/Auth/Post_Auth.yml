@@ -1,0 +1,38 @@
+Authenticate
+Endpoint for Authenticate
+---
+parameters:
+      - in: "header"
+        name: "username"
+        description: "Username and Pass object that needs to be make token"
+        required: true
+      - in: "header"
+        name: "password"
+        type: "string"
+        required: "true"
+        schema:
+          $ref: "#/definitions/User"
+
+tags:
+  - Auth
+responses:
+  201:
+    description: token
+    schema:
+      $ref: '#/definitions/User'
+
+security:
+  - []
+definitions:
+  User:
+    type: "object"
+    required:
+    - "username"
+    - "password"
+    properties:
+      username:
+        type: "string"
+        example: "UserNameFun"
+      password:
+        type: "string"
+        example: "password123"
