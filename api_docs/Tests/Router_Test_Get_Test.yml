@@ -1,0 +1,18 @@
+Test Api
+Endpoint for test API
+---
+tags:
+  - Tests
+responses:
+  200:
+    description: Return message Test
+    schema:
+      $ref: '#/definitions/root'
+
+definitions:
+  root:
+    type: object
+    properties:
+      message:
+        type: array
+        example: "I'm the router_test endpoint from /test."

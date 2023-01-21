@@ -17,3 +17,4 @@
 * Rodar aplicação
   * flask --app hello_world run
   * acessar http://127.0.0.1:5000
+  * acessar documentação http://127.0.0.1:5000/apidocs
