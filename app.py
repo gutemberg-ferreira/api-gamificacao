@@ -1,10 +1,23 @@
 from flask import Flask, jsonify
 from flasgger import Swagger
-from api.routes.router_test import router_test
-from api.routes.router_rule_events import router_rule_events
+from flask_jwt_extended import JWTManager
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
+
 
 template = {
       "swagger": "2.0",
+      "securityDefinitions": {
+          "APIKeyHeader": {
+              "type": "apiKey",
+              "name": "Authorization",
+              "in": "header",
+              "description": "Bearer "
+          },
+      },
+      "security": {
+        "APIKeyHeader": []
+      },
       "info": {
         "title": "API Gamification",
         "description": "API Gamification for Nexto",
@@ -24,7 +37,14 @@ template = {
 
 
 app = Flask(__name__)
+app.config.from_object('config')
 swagger = Swagger(app, template=template)
+ma = Marshmallow(app)
+db = SQLAlchemy(app)
+jwt = JWTManager(app)
+db.create_all()
 
-app.register_blueprint(router_test, url_prefix="/")
-app.register_blueprint(router_rule_events, url_prefix="/rulesEvents")
+from api.routes.router_users import Users
+from api.routes.router_test import test
+from api.routes.router_rule_events import get_all_events
+from api.routes.router_auth import authenticate
