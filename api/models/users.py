@@ -15,9 +15,6 @@ class Users(db.Model):
         self.email = email
 
 
-"""Definindo o Schema do Marshmallow para facilitar a utilização de JSON"""
-
-
 class UsersSchema(ma.Schema):
     class Meta:
         fields = ('username', 'name', 'email', 'password')

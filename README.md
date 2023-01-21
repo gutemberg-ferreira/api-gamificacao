@@ -23,3 +23,6 @@
 
 sudo apt-get install libmysqlclient-dev
 
+## Dependências: 
+  * Utilização de docker https://docs.docker.com/get-docker/
+  * MYSQL : rodar o comando : sudo docker-compose up -d

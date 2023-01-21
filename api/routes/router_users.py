@@ -6,9 +6,6 @@ from werkzeug.security import generate_password_hash
 from app import app, db
 
 
-# note: global variables can be accessed from view functions
-
-# add view function to the blueprint
 @app.route('/all', methods=['GET'])
 @jwt_required()
 @swag_from('../../api_docs/Users/Get_All_Users.yml')

@@ -5,7 +5,6 @@ from api.models.users import user_by_username
 from werkzeug.security import check_password_hash
 
 
-# Gerando token com base na Secret key do app e definindo expiração com 'exp'
 def auth():
     auth = request.headers
     if not auth or not auth.environ['HTTP_USERNAME'] or not auth.environ['HTTP_PASSWORD']:
