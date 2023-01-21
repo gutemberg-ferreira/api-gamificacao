@@ -1,0 +1,40 @@
+Test Api
+Endpoint for test API
+---
+parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added to the API"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+
+tags:
+  - Users
+responses:
+  201:
+    description: User created successfully
+    schema:
+      $ref: '#/definitions/User'
+
+definitions:
+  User:
+    type: "object"
+    required:
+    - "name"
+    - "password"
+    - "username"
+    - "email"
+    properties:
+      name:
+        type: "string"
+        example: "Fulano"
+      username:
+        type: "string"
+        example: "UserNameFun"
+      email:
+        type: "array"
+        example: "test@email.com"
+      password:
+        type: "string"
+        example: "password123"
