@@ -18,3 +18,8 @@ def auth():
         return jsonify({'message': 'Validated successfully', 'token': 'Bearer '+token, 'exp': datetime.datetime.now() + datetime.timedelta(hours=12)})
 
     return jsonify({'message': 'could not verify', 'WWW-Authenticate': 'Basic auth="Login required"'}), 401
+
+
+
+
+

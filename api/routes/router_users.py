@@ -23,7 +23,6 @@ def get_users():
 
 
 @app.route('/addUser', methods=['POST'])
-@jwt_required()
 @swag_from('../../api_docs/Users/Post_New_User.yml')
 def post_user():
     username = request.json['username']

@@ -1,28 +1,28 @@
 # API-Gamificação
 
-## Passos para Configurar o ambiente
+## Passos para Configurar o ambiente (Doc Versão 1.0)
 
-* Criar ambiente virtual de desenvolvimento
-    * python3 -m venv venv_api_gamificacao
+### Inicialização do banco de dados : 
+  * Utilização de docker https://docs.docker.com/get-docker/
+  * MYSQL : rodar o comando : sudo docker-compose up -d
 
+### Criar ambiente virtual de desenvolvimento : 
+  <code> python3 -m venv venv_api_gamificacao </code>
 
-* Ativar ambiente de desenvolvimento 
-    * source ~/ < repositorio > /venv_api_gamificacao/bin/activate
+  * Ativar ambiente de desenvolvimento 
+
+    * <code> source ~/ <repositorio> /venv_api_gamificacao/bin/activate </code>
+    
 
 
 * Instalar dependências
-    * pip install -r requirements.txt
+  * <code> pip install -r requirements.txt</code>
 
 
-* Rodar aplicação
-  * flask --app hello_world run
-  * acessar http://127.0.0.1:5000
-  * acessar documentação http://127.0.0.1:5000/apidocs
+### Rodar aplicação
+  * <code> flask --app hello_world run </code>
+  
+  * acessar documentação: http://127.0.0.1:5000/apidocs
 
 
 
-sudo apt-get install libmysqlclient-dev
-
-## Dependências: 
-  * Utilização de docker https://docs.docker.com/get-docker/
-  * MYSQL : rodar o comando : sudo docker-compose up -d

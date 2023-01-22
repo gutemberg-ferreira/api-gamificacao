@@ -7,7 +7,7 @@ parameters:
         description: "User object that needs to be added to the API"
         required: true
         schema:
-          $ref: "#/definitions/User"
+          $ref: "#/definitions/UserAdd"
 
 tags:
   - Users
@@ -15,16 +15,11 @@ responses:
   201:
     description: User created successfully
     schema:
-      $ref: '#/definitions/User'
+      $ref: '#/definitions/UserAdd'
 
 definitions:
-  User:
+  UserAdd:
     type: "object"
-    required:
-    - "name"
-    - "password"
-    - "username"
-    - "email"
     properties:
       name:
         type: "string"

@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from flasgger import swag_from
 from flask_jwt_extended import jwt_required
-from api.models.rule_events import RuleEvents, ruleEvent_schema
+from api.models.rule_events import RuleEvents, ruleEvent_schema, ruleEvents_schema
 from app import app, db
 
 
@@ -9,13 +9,13 @@ from app import app, db
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Get_All_Rule_Events.yml')
 def get_all_rule_events():
-    nameEvent = request.args.get('events')
+    nameEvent = request.args.get('nameEvent')
     if nameEvent:
         event = RuleEvents.query.filter(RuleEvents.name.like(f'%{nameEvent}%')).all()
     else:
         event = RuleEvents.query.all()
     if event:
-        result = ruleEvent_schema.dump(event)
+        result = ruleEvents_schema.dump(event)
         return jsonify({'message': 'successfully fetched', 'data': result.data})
 
     return jsonify({'message': 'nothing found', 'data': {}})

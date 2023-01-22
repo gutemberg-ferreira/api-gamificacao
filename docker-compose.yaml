@@ -5,7 +5,8 @@ services:
         command: --default-authentication-plugin=mysql_native_password
         restart: always
         environment:
-          MYSQL_ROOT_PASSWORD: "M1TN3xT0"
+          MYSQL_ROOT_PASSWORD: M1TN3xT0
+          MYSQL_DATABASE: gamification_nexto
         volumes:
           - db-volume:/var/lib/mysql
         network_mode: "host"

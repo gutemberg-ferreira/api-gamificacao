@@ -3,9 +3,37 @@ Endpoint for test API
 ---
 tags:
   - Rule Events
+parameters:
+  - in: "body"
+    name: "body"
+    description: "User object that needs to be added to the API"
+    required: true
+    schema:
+      $ref: "#/definitions/RuleEventAdd"
+
 responses:
-  200:
-    description: Return message Hello, World!
+  201:
+    description: User created successfully
+    schema:
+      $ref: '#/definitions/RuleEventAdd'
+
+definitions:
+  RuleEventAdd:
+    type: "object"
+    properties:
+      name_event:
+        type: "string"
+        example: "Realizar o Primeiro Login"
+      description:
+        type: "string"
+        example: "Usuário realiza o login pela primeira vez"
+      score:
+        type: "integer"
+        format: "int64"
+        example: 100
+      rule_description:
+        type: "string"
+        example: "Regra só se aplica no primeiro login realizado"
 
 security:
   - APIKeyHeader: []
