@@ -46,5 +46,5 @@ db.create_all()
 
 from api.routes.router_users import Users
 from api.routes.router_test import test
-from api.routes.router_rule_events import get_all_events
+from api.routes.router_rule_events import RuleEvents
 from api.routes.router_auth import authenticate

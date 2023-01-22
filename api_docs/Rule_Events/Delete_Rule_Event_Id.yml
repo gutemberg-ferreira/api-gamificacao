@@ -1,0 +1,11 @@
+Test Api
+Endpoint for test API
+---
+tags:
+  - Rule Events
+responses:
+  200:
+    description: Return message Hello, World!
+
+security:
+  - APIKeyHeader: []

@@ -47,3 +47,60 @@ def post_user():
     except:
         return jsonify({'message': 'unable to create', 'data': {}}), 500
 
+
+@app.route('/updateUserID', methods=['PATH'])
+@jwt_required()
+@swag_from('../../api_docs/Users/Path_User_Id.yml')
+def update_user(id):
+    username = request.json['username']
+    password = request.json['password']
+    name = request.json['name']
+    email = request.json['email']
+    user = Users.query.get(id)
+
+    if not user:
+        return jsonify({'message': "user don't exist", 'data': {}}), 404
+
+    pass_hash = generate_password_hash(password)
+
+    if user:
+        try:
+            user.username = username
+            user.password = pass_hash
+            user.name = name
+            user.email = email
+            db.session.commit()
+            result = user_schema.dump(user)
+            return jsonify({'message': 'successfully updated', 'data': result.data}), 201
+        except:
+            return jsonify({'message': 'unable to update', 'data':{}}), 500
+
+
+@app.route('/deleteUserID', methods=['DELETE'])
+@jwt_required()
+@swag_from('../../api_docs/Users/Delete_User_Id.yml')
+def delete_user(id):
+    user = Users.query.get(id)
+    if not user:
+        return jsonify({'message': "user don't exist", 'data': {}}), 404
+
+    if user:
+        try:
+            db.session.delete(user)
+            db.session.commit()
+            result = user_schema.dump(user)
+            return jsonify({'message': 'successfully deleted', 'data': result.data}), 200
+        except:
+            return jsonify({'message': 'unable to delete', 'data': {}}), 500
+
+
+@app.route('/getUserID', methods=['GET'])
+@jwt_required()
+@swag_from('../../api_docs/Users/Get_User_Id.yml')
+def get_user(id):
+    user = Users.query.get(id)
+    if user:
+        result = user_schema.dump(user)
+        return jsonify({'message': 'successfully fetched', 'data': result.data}), 201
+
+    return jsonify({'message': "user don't exist", 'data': {}}), 404
