@@ -1,5 +1,20 @@
 # API-Gamificação
 
+## Passos para Configurar o ambiente (Doc Versão 2.0)
+### Inicialização do serviço de gamificação : 
+
+  * Instalar docker e docker-compose https://docs.docker.com/get-docker/
+
+
+  * Subir a aplicação:  
+  
+  <code> sudo docker-compose up -d </code>
+
+ * acessar documentação: http://127.0.0.1:5000/apidocs
+
+
+ * criar usuário POST /addUser
+
 ## Passos para Configurar o ambiente (Doc Versão 1.0)
 
 ### Inicialização do banco de dados : 
