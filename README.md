@@ -15,6 +15,12 @@
 
  * criar usuário POST /addUser
 
+
+# Usuário e Senha para autenticação (http://localhost:5000/auth) da API
+
+  * **USER** : test
+  * **PASS** : test123
+
 ## Passos para Configurar o ambiente (Doc Versão 1.0)
 
 ### Inicialização do banco de dados : 

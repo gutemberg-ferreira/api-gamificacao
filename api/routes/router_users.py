@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flasgger import swag_from
-from api.models.users import Users, users_schema, user_schema, user_by_username
+from api.models.users import USERS, users_schema, user_schema, user_by_username
 from flask_jwt_extended import jwt_required
 from werkzeug.security import generate_password_hash
 from app import app, db
@@ -12,9 +12,9 @@ from app import app, db
 def get_users():
     name = request.args.get('name')
     if name:
-        users = Users.query.filter(Users.name.like(f'%{name}%')).all()
+        users = USERS.query.filter(USERS.name.like(f'%{name}%')).all()
     else:
-        users = Users.query.all()
+        users = USERS.query.all()
     if users:
         result = users_schema.dump(users)
         return jsonify({'message': 'successfully fetched', 'data': result.data})
@@ -36,7 +36,7 @@ def post_user():
         return jsonify({'message': 'user already exists', 'data': {}})
 
     pass_hash = generate_password_hash(password)
-    user = Users(username, pass_hash, name, email)
+    user = USERS(username, pass_hash, name, email)
 
     try:
         db.session.add(user)
@@ -55,7 +55,7 @@ def update_user(id):
     password = request.json['password']
     name = request.json['name']
     email = request.json['email']
-    user = Users.query.get(id)
+    user = USERS.query.get(id)
 
     if not user:
         return jsonify({'message': "user don't exist", 'data': {}}), 404
@@ -79,7 +79,7 @@ def update_user(id):
 @jwt_required()
 @swag_from('../../api_docs/Users/Delete_User_Id.yml')
 def delete_user(id):
-    user = Users.query.get(id)
+    user = USERS.query.get(id)
     if not user:
         return jsonify({'message': "user don't exist", 'data': {}}), 404
 
@@ -97,7 +97,7 @@ def delete_user(id):
 @jwt_required()
 @swag_from('../../api_docs/Users/Get_User_Id.yml')
 def get_user(id):
-    user = Users.query.get(id)
+    user = USERS.query.get(id)
     if user:
         result = user_schema.dump(user)
         return jsonify({'message': 'successfully fetched', 'data': result.data}), 201

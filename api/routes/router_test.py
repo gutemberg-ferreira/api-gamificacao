@@ -1,5 +1,7 @@
 from flask import jsonify, request
 from flasgger import swag_from
+from flask_cors import cross_origin
+
 from app import app
 # note: global variables can be accessed from view functions
 x = 5
@@ -7,12 +9,14 @@ x = 5
 
 # add view function to the blueprint
 @app.route("/")
+@cross_origin()
 @swag_from('../../api_docs/Tests/Router_Test_Get_Root.yml')
 def hello_world():
     return "<p>Hello, World!</p>"
 
 
 @app.route('/test', methods=['GET'])
+@cross_origin()
 @swag_from('../../api_docs/Tests/Router_Test_Get_Test.yml')
 def test():
     output = {"msg": "I'm the router_test endpoint from blueprint_x."}
@@ -21,6 +25,7 @@ def test():
 
 # add view function to the blueprint
 @app.route('/plus', methods=['POST'])
+@cross_origin()
 @swag_from('../../api_docs/Tests/Router_Test_Post_Sun.yml')
 def plus_x():
     # retrieve body data from input JSON

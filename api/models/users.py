@@ -1,11 +1,11 @@
 from app import db, ma
 
 
-class Users(db.Model):
+class USERS(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
-    name = db.Column(db.String(60), nullable=False)
+    password = db.Column(db.String(250), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
 
     def __init__(self, username, password, name, email):
@@ -22,7 +22,7 @@ class UsersSchema(ma.Schema):
 
 def user_by_username(username):
     try:
-        return Users.query.filter(Users.username == username).one()
+        return USERS.query.filter(USERS.username == username).one()
     except:
         return None
 
