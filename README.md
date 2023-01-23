@@ -5,16 +5,11 @@
 
   * Instalar docker e docker-compose https://docs.docker.com/get-docker/
 
-
-  * Subir a aplicação:  
+  * Abrir o command-line na pasta do projeto e rodar o camando para subir a aplicação:  
   
   <code> sudo docker-compose up -d </code>
 
  * acessar documentação: http://127.0.0.1:5000/apidocs
-
-
- * criar usuário POST /addUser
-
 
 # Usuário e Senha para autenticação (http://localhost:5000/auth) da API
 
