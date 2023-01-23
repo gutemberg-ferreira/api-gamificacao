@@ -8,7 +8,8 @@ class RULEEVENTS(db.Model):
     score = db.Column(db.Integer, nullable=False)
     rule_description = db.Column(db.String(250), unique=True, nullable=False)
 
-    def __init__(self, name_event, description, score, rule_description):
+    def __init__(self, id, name_event, description, score, rule_description):
+        self.id = id
         self.name_event = name_event
         self.description = description
         self.score = score
@@ -16,7 +17,7 @@ class RULEEVENTS(db.Model):
 
 class RuleEventSchema(ma.Schema):
     class Meta:
-        fields = ('name_event', 'description', 'score', 'rule_description')
+        fields = ('id', 'name_event', 'description', 'score', 'rule_description')
 
 
 ruleEvent_schema = RuleEventSchema()

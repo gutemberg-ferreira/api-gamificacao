@@ -39,7 +39,7 @@ def post_rule_event():
         return jsonify({'message': 'unable to create', 'data': {}}), 500
 
 
-@app.route('/updateRuleEventId/<int:id>', methods=['PATH'])
+@app.route('/updateRuleEventId/<int:id>', methods=['PATCH'])
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Update_Rule_Event_Id.yml')
 def update_rule_event_id(id):

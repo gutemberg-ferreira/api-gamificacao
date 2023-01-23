@@ -8,7 +8,8 @@ class USERS(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
 
-    def __init__(self, username, password, name, email):
+    def __init__(self, id, username, password, name, email):
+        self.id = id
         self.username = username
         self.password = password
         self.name = name
@@ -17,7 +18,7 @@ class USERS(db.Model):
 
 class UsersSchema(ma.Schema):
     class Meta:
-        fields = ('username', 'name', 'email', 'password')
+        fields = ('id', 'username', 'name', 'email', 'password')
 
 
 def user_by_username(username):

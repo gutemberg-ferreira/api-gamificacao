@@ -47,7 +47,7 @@ def post_user():
         return jsonify({'message': 'unable to create', 'data': {}}), 500
 
 
-@app.route('/updateUserID/<int:id>', methods=['PATH'])
+@app.route('/updateUserID/<int:id>', methods=['PATCH'])
 @jwt_required()
 @swag_from('../../api_docs/Users/Path_User_Id.yml')
 def update_user(id):
