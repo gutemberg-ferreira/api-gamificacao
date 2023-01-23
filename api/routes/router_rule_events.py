@@ -39,7 +39,7 @@ def post_rule_event():
         return jsonify({'message': 'unable to create', 'data': {}}), 500
 
 
-@app.route('/updateRuleEventId', methods=['PATH'])
+@app.route('/updateRuleEventId/<int:id>', methods=['PATH'])
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Update_Rule_Event_Id.yml')
 def update_rule_event_id(id):
@@ -64,7 +64,7 @@ def update_rule_event_id(id):
             return jsonify({'message': 'unable to update', 'data': {}}), 500
 
 
-@app.route('/deleteRuleEventId', methods=['DELETE'])
+@app.route('/deleteRuleEventId/<int:id>', methods=['DELETE'])
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Delete_Rule_Event_Id.yml')
 def delete_rule_event_id(id):
@@ -82,13 +82,13 @@ def delete_rule_event_id(id):
             return jsonify({'message': 'unable to delete', 'data': {}}), 500
 
 
-@app.route('/getRuleEventId', methods=['GET'])
+@app.route('/getRuleEventId/<int:id>', methods=['GET'])
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Get_Rule_Event_Id.yml')
 def get_rule_event_id(id):
     rule_event = RULEEVENTS.query.get(id)
     if rule_event:
         result = ruleEvent_schema.dump(rule_event)
-        return jsonify({'message': 'successfully fetched', 'data': result.data}), 201
+        return jsonify({'message': 'successfully fetched', 'data': result.data}), 200
 
     return jsonify({'message': "user don't exist", 'data': {}}), 404

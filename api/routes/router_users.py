@@ -47,7 +47,7 @@ def post_user():
         return jsonify({'message': 'unable to create', 'data': {}}), 500
 
 
-@app.route('/updateUserID', methods=['PATH'])
+@app.route('/updateUserID/<int:id>', methods=['PATH'])
 @jwt_required()
 @swag_from('../../api_docs/Users/Path_User_Id.yml')
 def update_user(id):
@@ -75,7 +75,7 @@ def update_user(id):
             return jsonify({'message': 'unable to update', 'data':{}}), 500
 
 
-@app.route('/deleteUserID', methods=['DELETE'])
+@app.route('/deleteUserID/<int:id>', methods=['DELETE'])
 @jwt_required()
 @swag_from('../../api_docs/Users/Delete_User_Id.yml')
 def delete_user(id):
@@ -93,7 +93,7 @@ def delete_user(id):
             return jsonify({'message': 'unable to delete', 'data': {}}), 500
 
 
-@app.route('/getUserID', methods=['GET'])
+@app.route('/getUserID/<int:id>', methods=['GET'])
 @jwt_required()
 @swag_from('../../api_docs/Users/Get_User_Id.yml')
 def get_user(id):
