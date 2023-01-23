@@ -1,7 +1,7 @@
 from app import db, ma
 
 
-class RuleEvents(db.Model):
+class RULEEVENTS(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name_event = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(200), nullable=False)

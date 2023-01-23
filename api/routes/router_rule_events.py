@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from flasgger import swag_from
 from flask_jwt_extended import jwt_required
-from api.models.rule_events import RuleEvents, ruleEvent_schema, ruleEvents_schema
+from api.models.rule_events import RULEEVENTS, ruleEvent_schema, ruleEvents_schema
 from app import app, db
 
 
@@ -11,9 +11,9 @@ from app import app, db
 def get_all_rule_events():
     nameEvent = request.args.get('nameEvent')
     if nameEvent:
-        event = RuleEvents.query.filter(RuleEvents.name.like(f'%{nameEvent}%')).all()
+        event = RULEEVENTS.query.filter(RULEEVENTS.name.like(f'%{nameEvent}%')).all()
     else:
-        event = RuleEvents.query.all()
+        event = RULEEVENTS.query.all()
     if event:
         result = ruleEvents_schema.dump(event)
         return jsonify({'message': 'successfully fetched', 'data': result.data})
@@ -29,7 +29,7 @@ def post_rule_event():
     description = request.json['description']
     score = request.json['score']
     rule_description = request.json['rule_description']
-    ruleevent = RuleEvents(name_event, description, score, rule_description)
+    ruleevent = RULEEVENTS(name_event, description, score, rule_description)
     try:
         db.session.add(ruleevent)
         db.session.commit()
@@ -47,7 +47,7 @@ def update_rule_event_id(id):
     description = request.json['description']
     score = request.json['score']
     rule_description = request.json['rule_description']
-    ruler_event = RuleEvents.query.get(id)
+    ruler_event = RULEEVENTS.query.get(id)
 
     if not ruler_event:
         return jsonify({'message': "Rule Event don't exist", 'data': {}}), 404
@@ -68,7 +68,7 @@ def update_rule_event_id(id):
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Delete_Rule_Event_Id.yml')
 def delete_rule_event_id(id):
-    rule_event = RuleEvents.query.get(id)
+    rule_event = RULEEVENTS.query.get(id)
     if not rule_event:
         return jsonify({'message': "Rule Event don't exist", 'data': {}}), 404
 
@@ -86,7 +86,7 @@ def delete_rule_event_id(id):
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Get_Rule_Event_Id.yml')
 def get_rule_event_id(id):
-    rule_event = RuleEvents.query.get(id)
+    rule_event = RULEEVENTS.query.get(id)
     if rule_event:
         result = ruleEvent_schema.dump(rule_event)
         return jsonify({'message': 'successfully fetched', 'data': result.data}), 201

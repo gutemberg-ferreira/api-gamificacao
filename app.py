@@ -32,7 +32,7 @@ template = {
       "security": {
         "APIKeyHeader": []
       },
-      "host": "https://0.0.0.0:5000",
+      "host": "0.0.0.0:5000",
       "basePath": "/",
       "operationId": "getmyData"
 }
@@ -49,5 +49,5 @@ db.create_all()
 
 from api.routes.router_users import USERS
 from api.routes.router_test import test
-from api.routes.router_rule_events import RuleEvents
+from api.routes.router_rule_events import RULEEVENTS
 from api.routes.router_auth import authenticate
