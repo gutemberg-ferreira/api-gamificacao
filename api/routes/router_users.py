@@ -26,6 +26,7 @@ def get_users():
 @jwt_required()
 @swag_from('../../api_docs/Users/Post_New_User.yml')
 def post_user():
+    id = None
     username = request.json['username']
     password = request.json['password']
     name = request.json['name']
@@ -37,7 +38,7 @@ def post_user():
         return jsonify({'message': 'user already exists', 'data': {}})
 
     pass_hash = generate_password_hash(password)
-    user = USERS(username, pass_hash, name, email)
+    user = USERS(id,username, pass_hash, name, email)
 
     try:
         db.session.add(user)
