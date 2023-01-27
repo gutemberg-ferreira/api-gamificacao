@@ -25,11 +25,13 @@ def get_all_rule_events():
 @jwt_required()
 @swag_from('../../api_docs/Rule_Events/Post_Rule_Event.yml')
 def post_rule_event():
+    id = None
     name_event = request.json['name_event']
     description = request.json['description']
     score = request.json['score']
     rule_description = request.json['rule_description']
-    ruleevent = RULEEVENTS(name_event, description, score, rule_description)
+    status = request.json['status']
+    ruleevent = RULEEVENTS(id, name_event, description, score, rule_description, status)
     try:
         db.session.add(ruleevent)
         db.session.commit()
@@ -47,6 +49,7 @@ def update_rule_event_id(id):
     description = request.json['description']
     score = request.json['score']
     rule_description = request.json['rule_description']
+    status = request.json['status']
     ruler_event = RULEEVENTS.query.get(id)
 
     if not ruler_event:

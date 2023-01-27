@@ -3,9 +3,18 @@ Endpoint for test API
 ---
 tags:
   - Rule Events
+parameters:
+  - in: "body"
+    name: "body"
+    description: "User object that needs to be added to the API"
+    required: true
+    schema:
+      $ref: "#/definitions/RuleEventAdd"
 responses:
   200:
     description: Return message Hello, World!
+    schema:
+      $ref: '#/definitions/RuleEventAdd'
 
 security:
   - APIKeyHeader: []
