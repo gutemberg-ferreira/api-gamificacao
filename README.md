@@ -11,6 +11,20 @@
 
  * acessar documentação: http://127.0.0.1:5000/apidocs
 
+<br>
+  * Obs: Para modificações na estrutura do banco de dados, será necessario deletar o volume de dados do docker com o comando: 
+
+
+* <code> docker compose rm --volumes </code>
+Obs: esse comando irá deletar todos os dados já cadastrados.
+  
+<br>
+Depois, rodar o comando para subir novamente: 
+
+* <code> docker compose up -d --buil </code>
+
+<br>
+
 # Usuário e Senha para autenticação (http://localhost:5000/auth) da API
 
   * **USER** : test
