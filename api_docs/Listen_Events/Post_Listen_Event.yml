@@ -1,0 +1,37 @@
+Test Api
+Endpoint for test API
+---
+tags:
+  - Listen Events
+parameters:
+  - in: "body"
+    name: "body"
+    description: "User object that needs to be added to the API"
+    required: true
+    schema:
+      $ref: "#/definitions/ListenEventAdd"
+
+responses:
+  201:
+    description: User created successfully
+    schema:
+      $ref: '#/definitions/ListenEventAdd'
+
+definitions:
+  ListenEventAdd:
+    type: "object"
+    properties:
+      user_id:
+        type: "integer"
+        format: "int64"
+        example: "1"
+      event_date:
+        type: "datetime"
+        example: "2023-01-28 00:10:00"
+      event_id:
+        type: "integer"
+        format: "int64"
+        example: 1
+
+security:
+  - APIKeyHeader: []

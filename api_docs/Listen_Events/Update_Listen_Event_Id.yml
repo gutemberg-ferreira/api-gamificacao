@@ -2,10 +2,10 @@ Test Api
 Endpoint for test API
 ---
 tags:
-  - Rule Events
+  - Listen Events
 parameters:
   - in: path
-    name: "RuleEventId"
+    name: "ListenEventId"
     required: true
     schema:
       type: integer
@@ -14,12 +14,12 @@ parameters:
     description: "User object that needs to be added to the API"
     required: true
     schema:
-      $ref: "#/definitions/RuleEventAdd"
+      $ref: "#/definitions/ListenEventAdd"
 responses:
   200:
     description: Return message Hello, World!
     schema:
-      $ref: '#/definitions/RuleEventAdd'
+      $ref: '#/definitions/ListenEventAdd'
 
 security:
   - APIKeyHeader: []

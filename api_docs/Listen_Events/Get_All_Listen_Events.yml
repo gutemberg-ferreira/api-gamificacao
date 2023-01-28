@@ -1,0 +1,19 @@
+Test Api
+Endpoint for test API
+---
+tags:
+  - Listen Events
+responses:
+  200:
+    description: Return message Hello, World!
+
+definitions:
+  root:
+    type: object
+    properties:
+      message:
+        type: array
+        example: "Hello, World!"
+
+security:
+  - APIKeyHeader: []

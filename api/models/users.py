@@ -1,6 +1,5 @@
 from app import db, ma
 
-
 class USERS(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
