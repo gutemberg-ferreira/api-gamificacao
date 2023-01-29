@@ -2,6 +2,7 @@ from flask import jsonify, request
 from flasgger import swag_from
 from flask_jwt_extended import jwt_required
 from api.models.listen_events import LISTENEVENTS, listenEvent_schema, listenEvents_schema
+from api.models.rule_events import RULEEVENTS
 from app import app, db
 
 
@@ -28,8 +29,11 @@ def post_listen_event():
     id = None
     user_id = request.json['user_id']
     event_date = request.json['event_date']
+    community_id = request.json['community_id']
     event_id = request.json['event_id']
-    listenevents = LISTENEVENTS(id, user_id, event_date, event_id)
+    query = RULEEVENTS.query.get(event_id)
+    generated_score = query.score
+    listenevents = LISTENEVENTS(id, user_id, event_date, community_id, event_id, generated_score)
     try:
         db.session.add(listenevents)
         db.session.commit()
@@ -45,6 +49,7 @@ def post_listen_event():
 def update_listen_event_id(id):
     user_id = request.json['user_id']
     event_date = request.json['event_date']
+    community_id = request.json['community_id']
     event_id = request.json['event_id']
     listen_event = LISTENEVENTS.query.get(id)
 
@@ -54,6 +59,7 @@ def update_listen_event_id(id):
         try:
             listen_event.user_id = user_id
             listen_event.event_date = event_date
+            listen_event.community_id = community_id
             listen_event.event_id = event_id
             db.session.commit()
             result = listenEvent_schema.dump(listen_event)

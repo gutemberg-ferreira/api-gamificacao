@@ -28,6 +28,10 @@ definitions:
       event_date:
         type: "datetime"
         example: "2023-01-28 00:10:00"
+      community_id:
+        type: "integer"
+        format: "int64"
+        example: 1
       event_id:
         type: "integer"
         format: "int64"
