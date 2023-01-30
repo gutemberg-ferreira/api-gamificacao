@@ -2,7 +2,7 @@ Test Api
 Endpoint for test API
 ---
 tags:
-  - Listen Events
+  - Receive Record
 responses:
   200:
     description: Return message Hello, World!

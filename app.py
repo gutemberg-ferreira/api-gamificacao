@@ -47,9 +47,9 @@ db = SQLAlchemy(app)
 jwt = JWTManager(app)
 db.create_all()
 
-from api.routes.router_users import USERS
-from api.routes.router_test import test
-from api.routes.router_rule_events import RULEEVENTS
-from api.routes.router_listen_events import LISTENEVENTS
-from api.routes.router_auth import authenticate
+from api.routes.router_listen_events import *
+from api.routes.router_rule_events import *
 from api.routes.router_rank import *
+from api.routes.router_auth import *
+from api.routes.router_users import *
+from api.routes.router_campaigns_bonus import *

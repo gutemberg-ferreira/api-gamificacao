@@ -2,40 +2,41 @@ Test Api
 Endpoint for test API
 ---
 tags:
-  - Receive Record
+  - Campaigns Bonus
 parameters:
   - in: "body"
     name: "body"
     description: "User object that needs to be added to the API"
     required: true
     schema:
-      $ref: "#/definitions/ListenEventAdd"
+      $ref: "#/definitions/CampaignsBonusAdd"
 
 responses:
   201:
     description: User created successfully
     schema:
-      $ref: '#/definitions/ListenEventAdd'
+      $ref: '#/definitions/CampaignsBonusAdd'
 
 definitions:
-  ListenEventAdd:
+  CampaignsBonusAdd:
     type: "object"
     properties:
-      user_id:
-        type: "integer"
-        format: "int64"
-        example: "1"
-      event_date:
+      date_begin:
         type: "datetime"
         example: "2023-01-28 00:10:00"
+      date_end:
+        type: "datetime"
+        example: "2023-01-28 00:10:00"
+      bonus:
+        type: "float"
+        example: 1.5
       community_id:
         type: "integer"
         format: "int64"
         example: 1
-      event_id:
-        type: "integer"
-        format: "int64"
-        example: 1
+      event_ids:
+        type: "string"
+        example: "1,2"
 
 security:
   - APIKeyHeader: []

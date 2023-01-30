@@ -2,7 +2,13 @@ Test Api
 Endpoint for test API
 ---
 tags:
-  - Receive Record
+  - Campaigns Bonus
+parameters:
+  - in: path
+    name: "Campaigns Bonus ID"
+    required: true
+    schema:
+      type: integer
 responses:
   200:
     description: Return message Hello, World!

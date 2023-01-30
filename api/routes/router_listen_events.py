@@ -32,8 +32,14 @@ def post_listen_event():
     community_id = request.json['community_id']
     event_id = request.json['event_id']
     query = RULEEVENTS.query.get(event_id)
-    generated_score = query.score
+    if query.status:
+        # TODO verificação de campanha ativa
+        generated_score = query.score
+    else:
+        generated_score = 0
+
     listenevents = LISTENEVENTS(id, user_id, event_date, community_id, event_id, generated_score)
+
     try:
         db.session.add(listenevents)
         db.session.commit()

@@ -1,0 +1,19 @@
+Test Api
+Endpoint for test API
+---
+tags:
+  - Campaigns Bonus
+parameters:
+  - in: path
+    name: "Campaigns Bonus ID"
+    required: true
+    schema:
+      type: integer
+responses:
+  200:
+    description: Return message Hello, World!
+    schema:
+      $ref: '#/definitions/CampaignsBonusAdd'
+
+security:
+  - APIKeyHeader: []

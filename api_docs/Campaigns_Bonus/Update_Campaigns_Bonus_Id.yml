@@ -2,10 +2,10 @@ Test Api
 Endpoint for test API
 ---
 tags:
-  - Receive Record
+  - Campaigns Bonus
 parameters:
   - in: path
-    name: "ListenEventId"
+    name: "Campaigns Bonus ID"
     required: true
     schema:
       type: integer
@@ -14,12 +14,12 @@ parameters:
     description: "User object that needs to be added to the API"
     required: true
     schema:
-      $ref: "#/definitions/ListenEventAdd"
+      $ref: "#/definitions/CampaignsBonusAdd"
 responses:
   200:
     description: Return message Hello, World!
     schema:
-      $ref: '#/definitions/ListenEventAdd'
+      $ref: '#/definitions/CampaignsBonusAdd'
 
 security:
   - APIKeyHeader: []
