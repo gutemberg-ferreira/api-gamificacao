@@ -10,7 +10,10 @@
   <code> sudo docker-compose up -d </code>
 
  * acessar documentação: http://127.0.0.1:5000/apidocs
-
+<br>
+<br>
+ * acessar Leaderbord Model: http://localhost:5000/dashrank
+<br>
 <br>
   * Obs: Para modificações na estrutura do banco de dados, será necessario deletar o volume de dados do docker com o comando: 
 

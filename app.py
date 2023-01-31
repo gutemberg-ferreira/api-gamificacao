@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flasgger import Swagger
 from flask_jwt_extended import JWTManager
@@ -37,8 +39,9 @@ template = {
       "operationId": "getmyData"
 }
 
-
-app = Flask(__name__)
+template_dir = os.path.abspath('./web/templates/')
+static_dir = os.path.abspath('./web/static/')
+app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 app.config.from_object('config')
 CORS(app)
 swagger = Swagger(app, template=template)
@@ -53,3 +56,4 @@ from api.routes.router_rank import *
 from api.routes.router_auth import *
 from api.routes.router_users import *
 from api.routes.router_campaigns_bonus import *
+from api.routes.router_dash_rank import *

@@ -38,13 +38,31 @@ event_ids VARCHAR(300) NOT NULL
 );
 
 INSERT INTO RULEEVENTS (name_event, description, score, rule_description, status)
-VALUES ('Evento de Teste', 'Evento de Teste', 100, 'Evento de Teste', true);
+VALUES ('Baixou e Abriu o APP', 'Evento que bonifica o usuário por ter baixado o aplicativo.', 100, 'Descrição a ser implementada', true);
 
 INSERT INTO USERS (username, password, name, email)
 VALUES('test', 'pbkdf2:sha256:260000$yPEqaSiYcba52Rs7$508bcb5499dafafe0e72ce4db502d1e7e979a94b61bb13d4d27e243361fadc64', 'Tester MIT', 'test@mit.test.com');
 
 INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
-VALUES(1, '2023-01-28 00:10:00', 1, 1, 100);
+VALUES(1, '2023-01-28 00:10:00', 1, 1, 1000);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(2, '2023-01-28 00:10:00', 1, 1, 900);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(3, '2023-01-28 00:10:00', 1, 1, 800);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(4, '2023-01-28 00:10:00', 1, 1, 700);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(5, '2023-01-28 00:10:00', 1, 1, 600);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(6, '2023-01-28 00:10:00', 1, 1, 500);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(7, '2023-01-28 00:10:00', 1, 1, 400);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(8, '2023-01-28 00:10:00', 1, 1, 300);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(9, '2023-01-28 00:10:00', 1, 1, 200);
+INSERT INTO LISTENEVENTS (user_id, event_date, community_id, event_id, generated_score)
+VALUES(10, '2023-01-28 00:10:00', 1, 1, 100);
 
 INSERT INTO CAMPAIGNSBONUS (date_begin, date_end, bonus, community_id, event_ids)
 VALUES('2023-01-31 00:00:00', '2023-02-28 23:59:00', 1.5, 1, '1');

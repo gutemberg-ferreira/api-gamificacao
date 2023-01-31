@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Ranking API-Gamification MIT {% endblock %}</h1>
+    <section class="main-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="leaderboard-card">
+						<div class="leaderboard-card__top">
+							<h3 class="text-center">{{ allRanking[1]['Overall_Score'] }}</h3>
+						</div>
+						<div class="leaderboard-card__body">
+							<div class="text-center">
+								<img src="static/img/user2.jpg" class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">Sandeep Sandy</h5>
+								<p class="text-muted mb-0">@sandeep</p>
+								<hr>
+								<div class="d-flex justify-content-between align-items-center">
+									<span><i class="fa fa-map-marker"></i> Bangalore</span>
+									<button class="btn btn-outline-success btn-sm">Congratulate</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="leaderboard-card leaderboard-card--first">
+						<div class="leaderboard-card__top">
+							<h3 class="text-center">{{ allRanking[0]['Overall_Score'] }}</h3>
+						</div>
+						<div class="leaderboard-card__body">
+							<div class="text-center">
+								<img src="static/img/user1.jpg" class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">Kiran Acharya</h5>
+								<p class="text-muted mb-0">@kiranacharyaa</p>
+								<hr>
+								<div class="d-flex justify-content-between align-items-center">
+									<span><i class="fa fa-map-marker"></i> Bangalore</span>
+									<button class="btn btn-outline-success btn-sm">Congratulate</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="leaderboard-card">
+						<div class="leaderboard-card__top">
+							<h3 class="text-center">{{ allRanking[2]['Overall_Score'] }}</h3>
+						</div>
+						<div class="leaderboard-card__body">
+							<div class="text-center">
+								<img src="static/img/user3.jpg" class="circle-img mb-2" alt="User Img">
+								<h5 class="mb-0">John doe</h5>
+								<p class="text-muted mb-0">@johndoe</p>
+								<hr>
+								<div class="d-flex justify-content-between align-items-center">
+									<span><i class="fa fa-map-marker"></i> Bangalore</span>
+									<button class="btn btn-outline-success btn-sm">Congratulate</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<h4>TOP 10 Users</h4>
+            <table class="table">
+                <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>User</th>
+                            <th>Score</th>
+                            <th>Communities</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    {% for i in allRanking %}
+                    <tr>
+                        <td>
+                            <div class="align-items-center">
+                                <h4 class="mr-0">{{ loop.index }} </h4>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+								<img src="../static/img/user5.jpg" class="circle-img circle-img--small mr-2" alt="User Img">
+								<div class="user-info__basic">
+									<h5 class="mb-0">{{ i['user_id'] }}- {{ faker.name() }}</h5>
+									<p class="text-muted mb-0">@{{ faker.first_name() }}</p>
+								</div>
+							</div>
+                        </td>
+
+                        <td>
+							<div class="d-flex align-items-baseline">
+								<h4 class="mr-1">$ {{ i['Overall_Score'] }}</h4><small class="text-success"><i class="fa fa-arrow-up"></i>5%</small>
+							</div>
+                        </td>
+                        <td></td>
+                        <td><button class="btn btn-success btn-sm">Details</button></td>
+                    {% endfor %}
+                    </tr>
+            </table>
+
+
+
+		</div>
+	</section>
+
+
+    <h3>{{ utc_dt }}</h3>
+{% endblock %}
