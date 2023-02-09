@@ -23,6 +23,8 @@ responses:
     schema:
       $ref: '#/definitions/MessageNoAuth'
 
+security:
+  - APIKeyHeader: []
 
 definitions:
   UserAdd:
