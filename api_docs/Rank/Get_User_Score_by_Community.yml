@@ -1,19 +1,26 @@
-Test Api
-Endpoint for test API
+Get scores from all communities the user joins
+Endpoint for Get scores from all communities the user joins
 ---
+
 tags:
   - Ranking
+
+parameters:
+      - in: path
+        name: "id"
+        required: true
+        description: "User ID"
+        schema:
+          type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Return scores from all communities the user joins
 
-definitions:
-  root:
-    type: object
-    properties:
-      message:
-        type: array
-        example: "Hello, World!"
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
 
 security:
   - APIKeyHeader: []

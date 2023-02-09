@@ -1,12 +1,16 @@
-Test Api
-Endpoint for test API
+To create a new event rule
+Endpoint for To create a new event rule
+  - Registered items must meet business rules and provide a score.
+  - The rule can be enabled or disabled.
 ---
+
 tags:
   - Rule Events
+
 parameters:
   - in: "body"
     name: "body"
-    description: "User object that needs to be added to the API"
+    description: "Event Rule object that needs to be added to the API"
     required: true
     schema:
       $ref: "#/definitions/RuleEventAdd"
@@ -16,6 +20,11 @@ responses:
     description: User created successfully
     schema:
       $ref: '#/definitions/RuleEventAdd'
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
 
 definitions:
   RuleEventAdd:

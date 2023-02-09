@@ -1,0 +1,43 @@
+swagger: '2.0'
+
+host: '0.0.0.0:5000'
+
+basePath: '/'
+
+info:
+  description: 'API Gamification for Nexto'
+  version: '1.6.0'
+  title: 'API Gamification'
+  operationId: 'getmyData'
+  termsOfService: 'https://example.com/terms/'
+  contact:
+    email: contact@example.com
+    url: 'http://example.com/contact'
+    responsibleOrganization: 'M.I.T.'
+    responsibleDeveloper: 'GB, Thiago'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: 'https://logosmarcas.net/wp-content/uploads/2021/09/MIT-Engineers-Logo.png'
+  externalDocs:
+    description: Find out how to create Github repo for your OpenAPI spec.
+    url: 'https://github.com/Rebilly/generator-openapi-repo'
+  produces:
+    - application/json
+
+securityDefinitions:
+  APIKeyHeader:
+    type: apiKey
+    name: 'Authorization'
+    in: header
+    description: 'Bearer '
+
+tags:
+  - name: Auth
+  - name: Users API
+  - name: Rule Events
+  - name: Campaigns Bonus
+  - name: Receive Record
+  - name: Ranking
+

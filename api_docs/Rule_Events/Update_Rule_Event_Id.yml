@@ -1,5 +1,5 @@
-Test Api
-Endpoint for test API
+To update a event rule by ID
+Endpoint for To update a event rule by ID
 ---
 tags:
   - Rule Events
@@ -11,15 +11,26 @@ parameters:
       type: integer
   - in: "body"
     name: "body"
-    description: "User object that needs to be added to the API"
+    description: "Body containing the fields [name_event][description][score][rule_description][status]"
     required: true
     schema:
       $ref: "#/definitions/RuleEventAdd"
+
 responses:
-  200:
-    description: Return message Hello, World!
+  201:
+    description: Rule Event updated successfully
     schema:
       $ref: '#/definitions/RuleEventAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageRuleEventNotFound'
 
 security:
   - APIKeyHeader: []

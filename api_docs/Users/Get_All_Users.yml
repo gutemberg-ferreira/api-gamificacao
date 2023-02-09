@@ -1,11 +1,16 @@
-Test Api
-Endpoint for test API
+Get All API authentication users id
+Endpoint to Get All API authentication users id
 ---
 tags:
-  - Users
+  - Users API
 responses:
   200:
-    description: Return message Hello, World!
+    description: Return All users
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
 
 security:
   - APIKeyHeader: []

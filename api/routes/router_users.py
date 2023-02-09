@@ -83,14 +83,14 @@ def update_user(id):
 def delete_user(id):
     user = USERS.query.get(id)
     if not user:
-        return jsonify({'message': "user don't exist", 'data': {}}), 404
+        return jsonify({'message': "user don't exist"}), 404
 
     if user:
         try:
             db.session.delete(user)
             db.session.commit()
             result = user_schema.dump(user)
-            return jsonify({'message': 'successfully deleted', 'data': result.data}), 200
+            return jsonify(result.data), 200
         except:
             return jsonify({'message': 'unable to delete', 'data': {}}), 500
 
@@ -102,6 +102,6 @@ def get_user(id):
     user = USERS.query.get(id)
     if user:
         result = user_schema.dump(user)
-        return jsonify({'message': 'successfully fetched', 'data': result.data}), 201
+        return jsonify(result.data), 200
 
-    return jsonify({'message': "user don't exist", 'data': {}}), 404
+    return jsonify({'message': "user don't exist"}), 404

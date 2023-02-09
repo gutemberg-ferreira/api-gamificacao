@@ -1,19 +1,17 @@
-Test Api
-Endpoint for test API
+To get all events rule
+Endpoint for To get all events rule
 ---
 tags:
   - Rule Events
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Return All events rule
 
-definitions:
-  root:
-    type: object
-    properties:
-      message:
-        type: array
-        example: "Hello, World!"
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
 
 security:
   - APIKeyHeader: []

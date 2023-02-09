@@ -1,21 +1,28 @@
-Test Api
-Endpoint for test API
+To create new api authentication user
+Endpoint to create new api authentication user
 ---
 parameters:
       - in: "body"
         name: "body"
-        description: "User object that needs to be added to the API"
+        description: "Body containing the fields [name][username][email][password]"
         required: true
         schema:
           $ref: "#/definitions/UserAdd"
 
 tags:
-  - Users
+  - Users API
+
 responses:
   201:
     description: User created successfully
     schema:
       $ref: '#/definitions/UserAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
 
 definitions:
   UserAdd:

@@ -1,8 +1,10 @@
-Test Api
-Endpoint for test API
+To update a Campaigns Bonus by ID
+Endpoint for To update a Campaigns Bonus by ID
 ---
+
 tags:
   - Campaigns Bonus
+
 parameters:
   - in: path
     name: "Campaigns Bonus ID"
@@ -11,15 +13,26 @@ parameters:
       type: integer
   - in: "body"
     name: "body"
-    description: "User object that needs to be added to the API"
+    description: "Object that needs to be added to the API"
     required: true
     schema:
       $ref: "#/definitions/CampaignsBonusAdd"
+
 responses:
-  200:
-    description: Return message Hello, World!
+  201:
+    description: Campaigns Bonus updated successfully
     schema:
       $ref: '#/definitions/CampaignsBonusAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageCampaignsBonusNotFound'
 
 security:
   - APIKeyHeader: []

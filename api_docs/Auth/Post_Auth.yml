@@ -1,13 +1,14 @@
-Authenticate
-Endpoint for Authenticate
+For get authentication key.
+Endpoint used to get authentication key.
 ---
 parameters:
       - in: "header"
         name: "username"
-        description: "Username and Pass object that needs to be make token"
+        description: "Application username"
         required: true
       - in: "header"
         name: "password"
+        description: "Application password"
         type: "string"
         required: "true"
         schema:
@@ -24,6 +25,12 @@ responses:
 security:
   - []
 definitions:
+  MessageNoAuth:
+    type: "object"
+    properties:
+      msg:
+        type: "string"
+        example: "Missing Authorization Header"
   User:
     type: "object"
     required:
@@ -34,5 +41,6 @@ definitions:
         type: "string"
         example: "UserNameFun"
       password:
+
         type: "string"
         example: "password123"

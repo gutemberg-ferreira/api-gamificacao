@@ -1,19 +1,26 @@
-Test Api
-Endpoint for test API
+Get ranking of users of a community by ID
+Endpoint for Get ranking of users of a community by ID
 ---
+
 tags:
   - Ranking
+
+parameters:
+      - in: path
+        name: "id"
+        required: true
+        description: "Community ID"
+        schema:
+          type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Return ranking of users of a community by ID
 
-definitions:
-  root:
-    type: object
-    properties:
-      message:
-        type: array
-        example: "Hello, World!"
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
 
 security:
   - APIKeyHeader: []

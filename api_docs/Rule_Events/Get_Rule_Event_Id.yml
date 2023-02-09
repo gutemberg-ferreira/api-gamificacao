@@ -1,11 +1,40 @@
-Test Api
-Endpoint for test API
+To get a event rule by ID
+Endpoint for To get a event rule by ID
 ---
 tags:
   - Rule Events
+
+parameters:
+      - in: path
+        name: "id"
+        required: true
+        description: "Event Rule ID"
+        schema:
+          type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Rule Event get successfully
+    schema:
+      $ref: '#/definitions/RuleEventAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageRuleEventNotFound'
 
 security:
   - APIKeyHeader: []
+
+definitions:
+  MessageRuleEventNotFound:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        example: "Rule Event don't exist"

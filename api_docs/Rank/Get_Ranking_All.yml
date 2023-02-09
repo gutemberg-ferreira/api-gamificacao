@@ -1,19 +1,18 @@
-Test Api
-Endpoint for test API
+Get ranking of users within the "NEXTO application"
+Endpoint for Get ranking users within the "NEXTO application"
 ---
+
 tags:
   - Ranking
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Return ranking of users within the "NEXTO application"
 
-definitions:
-  root:
-    type: object
-    properties:
-      message:
-        type: array
-        example: "Hello, World!"
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
 
 security:
   - APIKeyHeader: []

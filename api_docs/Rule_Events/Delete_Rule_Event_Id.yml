@@ -1,11 +1,31 @@
-Test Api
-Endpoint for test API
+To delete a event rule by ID
+Endpoint for To delete event rule by ID
 ---
 tags:
   - Rule Events
+parameters:
+      - in: path
+        name: "id"
+        required: true
+        description: "Event Rule ID"
+        schema:
+          type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Event Rule deleted successfully
+    schema:
+      $ref: '#/definitions/RuleEventAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageUserNotFound'
 
 security:
   - APIKeyHeader: []

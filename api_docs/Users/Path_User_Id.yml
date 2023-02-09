@@ -1,11 +1,38 @@
-Test Api
-Endpoint for test API
+To update api authentication user by ID
+Endpoint to update api authentication user by ID
 ---
 tags:
-  - Users
+  - Users API
+
+parameters:
+      - in: path
+        name: "id"
+        required: true
+        description: "User ID"
+        schema:
+          type: integer
+      - in: "body"
+        name: "body"
+        description: "Body containing the fields [name][username][email][password]"
+        required: true
+        schema:
+          $ref: "#/definitions/UserAdd"
+
 responses:
-  200:
-    description: Return message Hello, World!
+  201:
+    description: User updated successfully
+    schema:
+      $ref: '#/definitions/UserAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageUserNotFound'
 
 security:
   - APIKeyHeader: []

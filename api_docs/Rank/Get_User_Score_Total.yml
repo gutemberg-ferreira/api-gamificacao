@@ -1,19 +1,26 @@
-Test Api
-Endpoint for test API
+Get total user score across Nexto platform
+Endpoint for Get total user score across Nexto platform
 ---
+
 tags:
   - Ranking
+
+parameters:
+      - in: path
+        name: "id"
+        required: true
+        description: "User ID"
+        schema:
+          type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Return total user score across Nexto platform
 
-definitions:
-  root:
-    type: object
-    properties:
-      message:
-        type: array
-        example: "Hello, World!"
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
 
 security:
   - APIKeyHeader: []

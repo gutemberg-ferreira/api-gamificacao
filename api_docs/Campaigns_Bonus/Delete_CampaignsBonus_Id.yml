@@ -1,17 +1,32 @@
-Test Api
-Endpoint for test API
+Delete bonus campaign by ID
+Endpoint for Delete bonus campaign by ID
 ---
+
 tags:
   - Campaigns Bonus
+
 parameters:
   - in: path
     name: "Campaigns Bonus ID"
     required: true
     schema:
       type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Campaigns Bonus deleted successfully
+    schema:
+      $ref: '#/definitions/CampaignsBonusAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageCampaignsBonusNotFound'
 
 security:
   - APIKeyHeader: []

@@ -1,19 +1,18 @@
-Test Api
-Endpoint for test API
+Get all bonus campaign
+Endpoint for Get all bonus campaign
 ---
+
 tags:
   - Campaigns Bonus
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Return All Campaigns Bonus
 
-definitions:
-  root:
-    type: object
-    properties:
-      message:
-        type: array
-        example: "Hello, World!"
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
 
 security:
   - APIKeyHeader: []

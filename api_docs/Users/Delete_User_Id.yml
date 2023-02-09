@@ -1,11 +1,32 @@
-Test Api
-Endpoint for test API
+Delete api authentication user by ID
+Endpoint to Delete api authentication user by ID
 ---
 tags:
-  - Users
+  - Users API
+
+parameters:
+      - in: path
+        name: "id"
+        required: true
+        description: "User ID"
+        schema:
+          type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: User deleted successfully
+    schema:
+      $ref: '#/definitions/UserAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageUserNotFound'
 
 security:
   - APIKeyHeader: []

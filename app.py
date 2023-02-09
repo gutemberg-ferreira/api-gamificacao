@@ -7,44 +7,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 
-template = {
-      "swagger": "2.0",
-      "swaggerDefinition": {
-            "info": {
-                "title": "API Gamification",
-                "description": "API Gamification for Nexto",
-                "contact": {
-                  "responsibleOrganization": "M.I.T.",
-                  "responsibleDeveloper": "GB, Thiago",
-                  "email": "me@me.com",
-                  "url": "www.me.com",
-                },
-                "termsOfService": "http://me.com/terms",
-                "version": "1.0.0"
-              }
-      },
-      "securityDefinitions": {
-          "APIKeyHeader": {
-              "type": "apiKey",
-              "name": "Authorization",
-              "in": "header",
-              "description": "Bearer "
-          },
-      },
-      "security": {
-        "APIKeyHeader": []
-      },
-      "host": "0.0.0.0:5000",
-      "basePath": "/",
-      "operationId": "getmyData"
-}
+template = 'api_docs/swagger.yml'
 
 template_dir = os.path.abspath('./web/templates/')
 static_dir = os.path.abspath('./web/static/')
 app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 app.config.from_object('config')
 CORS(app)
-swagger = Swagger(app, template=template)
+swagger = Swagger(app, template_file=template)
 ma = Marshmallow(app)
 db = SQLAlchemy(app)
 jwt = JWTManager(app)

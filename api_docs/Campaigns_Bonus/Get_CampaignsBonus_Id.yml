@@ -1,19 +1,39 @@
-Test Api
-Endpoint for test API
+Get bonus campaign by ID
+Endpoint for Get bonus campaign by ID
 ---
 tags:
   - Campaigns Bonus
+
 parameters:
   - in: path
     name: "Campaigns Bonus ID"
     required: true
     schema:
       type: integer
+
 responses:
   200:
-    description: Return message Hello, World!
+    description: Rule Event get successfully
     schema:
-      $ref: '#/definitions/CampaignsBonusAdd'
+      $ref: '#/definitions/RuleEventAdd'
+
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/MessageNoAuth'
+
+  404:
+    description: 'Error: NOT FOUND'
+    schema:
+      $ref: '#/definitions/MessageCampaignsBonusNotFound'
 
 security:
   - APIKeyHeader: []
+
+definitions:
+  MessageCampaignsBonusNotFound:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        example: "Bonus Campaign don't exist"
