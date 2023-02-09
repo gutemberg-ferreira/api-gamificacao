@@ -5,7 +5,15 @@ host: '0.0.0.0:5000'
 basePath: '/'
 
 info:
-  description: 'API Gamification for Nexto'
+  description: |
+    This is an document of specification for to demonstrate features of **API Gamification M.I.T**. 
+
+    # Introduction
+
+    This specification is intended to to be a good starting point for describing your API in Swagger format.
+
+    The project repository can be found at [/api-gamificacao](https://github.com/gutemberg-ferreira/api-gamificacao).
+
   version: '1.6.0'
   title: 'API Gamification'
   operationId: 'getmyData'

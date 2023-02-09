@@ -16,15 +16,41 @@ parameters:
 
 tags:
   - Auth
-responses:
-  201:
-    description: token
-    schema:
-      $ref: '#/definitions/User'
 
+responses:
+  200:
+    description: Response body
+    schema:
+      $ref: '#/definitions/Response_Auth'
+  401:
+    description: 'Error: UNAUTHORIZED'
+    schema:
+      $ref: '#/definitions/Response_NoAuth'
 security:
   - []
+
 definitions:
+  Response_NoAuth:
+    type: "object"
+    properties:
+      WWW-Authenticate:
+        type: "string"
+        example: "Basic auth=\"Login required\""
+      message:
+        type: "string"
+        example: "could not verify"
+  Response_Auth:
+    type: "object"
+    properties:
+      exp:
+        type: "string"
+        example: "Thu, 09 Feb 2023 15:39:59 GMT"
+      message:
+        type: "string"
+        example: "Validated successfully"
+      token:
+        type: "string"
+        example: "Bearer token"
   MessageNoAuth:
     type: "object"
     properties:
@@ -41,6 +67,5 @@ definitions:
         type: "string"
         example: "UserNameFun"
       password:
-
         type: "string"
         example: "password123"
