@@ -13,13 +13,11 @@ def auth():
     if not user:
         return jsonify({'message': 'user not found', 'data': []}), 401
 
+
     if user and check_password_hash(user.password, auth.environ['HTTP_PASSWORD']):
         token = create_access_token(identity=auth.environ['HTTP_USERNAME'])
         return jsonify({'message': 'Validated successfully', 'token': 'Bearer '+token, 'exp': datetime.datetime.now() + datetime.timedelta(hours=12)})
 
     return jsonify({'message': 'could not verify', 'WWW-Authenticate': 'Basic auth="Login required"'}), 401
-
-
-
 
 

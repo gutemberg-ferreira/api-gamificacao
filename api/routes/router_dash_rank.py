@@ -1,6 +1,7 @@
 from flask import jsonify, request, render_template
 import datetime
 from faker import Faker
+from flask_login import login_required, current_user
 from sqlalchemy import desc
 
 from api.models.listen_events import LISTENEVENTS
@@ -9,9 +10,10 @@ from app import app, db
 
 
 @app.route("/dashrank")
+@login_required
 def dash_rank():
     fake = Faker('pt_BR')
-    return render_template('index.html', utc_dt=datetime.datetime.utcnow(), allRanking=get_all_ranking(), cont=0, faker=fake)
+    return render_template('index.html', utc_dt=datetime.datetime.utcnow(), allRanking=get_all_ranking(), cont=0, faker=fake, name=current_user.name)
 
 @app.route('/about/')
 def about():

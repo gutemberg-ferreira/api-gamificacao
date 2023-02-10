@@ -1,6 +1,7 @@
 from app import db, ma
+from flask_login import UserMixin
 
-class USERS(db.Model):
+class USERS(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(250), nullable=False)
@@ -26,6 +27,9 @@ def user_by_username(username):
     except:
         return None
 
+def get_user(user_id):
+    user = USERS.query.filter_by(id=user_id).first()
+    return user
 
 user_schema = UsersSchema()
 users_schema = UsersSchema(strict=True, many=True)

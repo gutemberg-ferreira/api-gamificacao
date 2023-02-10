@@ -24,7 +24,7 @@ Obs: esse comando irá deletar todos os dados já cadastrados.
 <br>
 Depois, rodar o comando para subir novamente: 
 
-* <code> docker compose up -d --buil </code>
+* <code> docker compose up -d --build </code>
 
 <br>
 
