@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
 {% block javascript %}
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+
     <script>
         $(document).ready(function () {
             $('#campaignsbonus').DataTable({
@@ -40,20 +38,36 @@
                         <div>
                             <h2> Register New Campaigns Bonus </h2>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group input-group date" id="datetimepicker">
                             <input class="form-control" type="text" name="date_begin" placeholder="Date Begin" required>
+                            <span class="input-group-addon" style="width: 50px;">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <script type="text/javascript">
+                                 $(function () {
+                                     $('#datetimepicker').datetimepicker();
+                                 });
+                            </script>
+                        </div>
+
+                        <div class="form-group input-group date" id="datetimepicker2">
+                            <input class="form-control" type="text" name="date_end" placeholder="Date End" required >
+                            <span class="input-group-addon" style="width: 50px;">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <script type="text/javascript">
+                                 $(function () {
+                                     $('#datetimepicker2').datetimepicker();
+                                 });
+                            </script>
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" type="text" name="date_end" placeholder="Date End" required>
+                            <input class="form-control" type="number" step=0.01 min=0 name="bonus" placeholder="Bonus Value" required>
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" type="text" name="bonus" placeholder="Bonus Value" required>
-                        </div>
-
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="community_id" placeholder="Community ID" required>
+                            <input class="form-control" type="number" min=0 name="community_id" placeholder="Community ID" required>
                         </div>
 
                         <div class="form-group">
