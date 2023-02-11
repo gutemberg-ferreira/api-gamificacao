@@ -38,7 +38,7 @@ event_ids VARCHAR(300) NOT NULL
 );
 
 INSERT INTO RULEEVENTS (name_event, description, score, rule_description, status)
-VALUES ('Baixou e Abriu o APP', 'Evento que bonifica o usuário por ter baixado o aplicativo.', 100, 'Descrição a ser implementada', true);
+VALUES ('Baixou e Abriu o APP', 'Evento que bonifica o usuario por ter baixado o aplicativo.', 100, 'Descricao a ser implementada', true);
 
 INSERT INTO USERS (username, password, name, email)
 VALUES('test', 'pbkdf2:sha256:260000$yPEqaSiYcba52Rs7$508bcb5499dafafe0e72ce4db502d1e7e979a94b61bb13d4d27e243361fadc64', 'Tester MIT', 'test@mit.test.com');

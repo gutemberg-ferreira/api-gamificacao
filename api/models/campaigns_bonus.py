@@ -18,6 +18,15 @@ class CAMPAIGNSBONUS(db.Model):
         self.community_id = community_id
         self.event_ids = event_ids
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'date_begin': self.date_begin,
+            'date_end': self.date_end,
+            'bonus': self.bonus,
+            'community_id': self.community_id,
+            'event_ids': self.event_ids,
+        }
 
 class CampaignsBonusSchema(ma.Schema):
     class Meta:

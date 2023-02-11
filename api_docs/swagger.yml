@@ -8,7 +8,7 @@ info:
   description: |
     This is an document of specification for to demonstrate features of **API Gamification M.I.T**. 
 
-    # Introduction
+    ### Introduction
 
     This specification is intended to to be a good starting point for describing your API in Swagger format.
 
@@ -20,7 +20,7 @@ info:
   termsOfService: 'https://example.com/terms/'
   contact:
     email: contact@example.com
-    url: 'http://example.com/contact'
+    url: '/'
     responsibleOrganization: 'M.I.T.'
     responsibleDeveloper: 'GB, Thiago'
   license:

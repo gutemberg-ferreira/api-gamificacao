@@ -29,7 +29,7 @@ def login():
         return redirect(url_for('login'))
 
     login_user(username, remember=remember)
-    return redirect(url_for('dash_rank'))
+    return redirect(url_for('home'))
 
 
 @app.route('/logout')

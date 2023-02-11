@@ -2,18 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>ADMIN MIT GAMIFICATION</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-          crossorigin="anonymous">
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script
+
+
+    {% block javascript %} {% endblock %}
+
 </head>
 
 <body>
@@ -31,17 +36,28 @@
                         </a>
                         {% if current_user.is_authenticated %}
                         <a href="{{ url_for('dash_rank') }}" class="navbar-item">
-                            Dash_Rank
+                            Ranking Nexto
+                        </a>
+                        {% endif %}
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('rule_events_html') }}" class="navbar-item">
+                            Rule Events
+                        </a>
+                        {% endif %}
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('campaigns_bonus_html') }}" class="navbar-item">
+                            Campaigns Bonus
                         </a>
                         {% endif %}
                         {% if not current_user.is_authenticated %}
                         <a href="{{ url_for('login') }}" class="navbar-item">
                             Login
                         </a>
-                        <a href="{{ url_for('about') }}" class="navbar-item">
-                            About
-                        </a>
                         {% endif %}
+
+                        <a href="/apidocs" class="navbar-item">
+                            API Documentation
+                        </a>
                         {% if current_user.is_authenticated %}
                         <a href="{{ url_for('logout') }}" class="navbar-item">
                             Logout
@@ -60,5 +76,9 @@
     </div>
 </section>
 </body>
+
+
+
+
 
 </html>

@@ -17,6 +17,16 @@ class RULEEVENTS(db.Model):
         self.rule_description = rule_description
         self.status = status
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name_event': self.name_event,
+            'description': self.description,
+            'score': self.score,
+            'rule_description': self.rule_description,
+            'status': self.status,
+        }
+
 class RuleEventSchema(ma.Schema):
     class Meta:
         fields = ('id', 'name_event', 'description', 'score', 'rule_description', 'status')

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block javascript %}
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#campaignsbonus').DataTable({
+                ajax: '/campaignsbonus/data',
+                columns: [
+                    {data: 'id', },
+                    {data: 'date_begin', searchable: true},
+                    {data: 'date_end', orderable: false, searchable: false},
+                    {data: 'bonus', orderable: true, searchable: false},
+                    {data: 'community_id', orderable: false, searchable: false},
+                    {data: 'event_ids', orderable: true, searchable: true}
+                ],
+            });
+        } );
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/" method="post">
+                        <div>
+                            <h2> Register New Campaigns Bonus </h2>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="date_begin" placeholder="Date Begin" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="date_end" placeholder="Date End" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="bonus" placeholder="Bonus Value" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="community_id" placeholder="Community ID" required>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="rule_events" cols="100"
+                                      placeholder="Add Rule Events" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="status"> Is Active?
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">
+                            Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+    </div>
+    <br><br><br>
+    <div class="row">
+        <div>
+            <table id="campaignsbonus" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>date_begin</th>
+                        <th>date_end</th>
+                        <th>bonus</th>
+                        <th>community_id</th>
+                        <th>event_ids</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
