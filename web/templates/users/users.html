@@ -22,7 +22,7 @@
     <br>
     <p>
       <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Create New Rule Event
+        Create a New User API
       </a>
     </p>
 <div class="collapse" id="collapseExample">
@@ -32,14 +32,13 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/admin/addRuleEventHtml" method="post">
-                                <div><h2> Register New Event Rule </h2></div>
-                                <div class="form-group"><input class="form-control" type="text" name="name_event" placeholder="Event Name" required></div>
-                                <div class="form-group"><textarea class="form-control" name="description" cols="100" placeholder="Add a Description" required></textarea></div>
-                                <div class="form-group"><input class="form-control" type="text" name="score" placeholder="Score" required></div>
-                                <div class="form-group"><textarea class="form-control" name="rule_description" cols="100" placeholder="Add a Rule Description" required></textarea></div>
-                                <div class="form-group"><label><input type="checkbox" name="status"> Is Active?</label></div>
-                                <button class="btn btn-primary" type="submit">Add Rule Event</button>
+                            <form action="/admin/addUsersHtml" method="post">
+                                <div><h2> Register New User </h2></div>
+                                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" required></div>
+                                <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name" required></div>
+                                <div class="form-group"><input class="form-control" type="text" name="email" placeholder="Email" required></div>
+                                <div class="form-group"><input class="form-control" type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" required></div>
+                                <button class="btn btn-primary" type="submit">Add a New User API</button>
                             </form>
                         </div>
                     </div>
@@ -54,26 +53,24 @@
             <thead>
                 <tr>
                      <th>ID</th>
-                     <th>Event Name</th>
-                     <th>Description</th>
-                     <th>Score</th>
-                     <th>Rule Description</th>
-                     <th>Status</th>
+                     <th>Username</th>
+                     <th>Name</th>
+                     <th>Email</th>
                      <th>Edit</th>
                      <th>Delete</th>
+                     <th>Change Password</th>
                 </tr>
             </thead>
             <tbody>
-                {%for ruleevent in rule_events%}
+                {%for user in users%}
                     <tr>
-                        <td>{{ ruleevent.id }}</td>
-                        <td>{{ ruleevent.name_event }}</td>
-                        <td>{{ ruleevent.description }}</td>
-                        <td>{{ ruleevent.score }}</td>
-                        <td>{{ ruleevent.rule_description }}</td>
-                        <td>{{ ruleevent.status }}</td>
-                        <td> <a href="/admin/ruleevents/{{ ruleevent.id }}/update"><button class="btn btn-outline-success">Edit</button></a> </td>
-                        <td> <a href="/admin/ruleevents/{{ ruleevent.id }}/delete"><button class="btn btn-outline-danger">Delete</button></a></td>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td> <a href="/admin/users/{{ user.id }}/update"><button class="btn btn-outline-success">Edit</button></a> </td>
+                        <td> <a href="/admin/users/{{ user.id }}/delete"><button class="btn btn-outline-danger">Delete</button></a></td>
+                        <td> <a href="/admin/users/{{ user.id }}/changepass"><button class="btn btn-outline-danger">Change Pass</button></a></td>
                     </tr>
                 {% endfor %}
             </tbody>

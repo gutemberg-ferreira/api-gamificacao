@@ -9,12 +9,14 @@ from app import app, db
 @swag_from('../../api_docs/Campaigns_Bonus/Post_Campaigns_Bonus.yml')
 def post_campaigns_bonus():
     id = None
+    name = request.json['name']
     date_begin = request.json['date_begin']
     date_end = request.json['date_end']
     bonus = request.json['bonus']
     community_id = request.json['community_id']
     event_ids = request.json['event_ids']
-    campaigns = CAMPAIGNSBONUS(id, date_begin, date_end, bonus, community_id, event_ids)
+    status = request.json['status']
+    campaigns = CAMPAIGNSBONUS(id, name, date_begin, date_end, bonus, community_id, event_ids, status)
 
     try:
         db.session.add(campaigns)
@@ -29,22 +31,26 @@ def post_campaigns_bonus():
 @jwt_required()
 @swag_from('../../api_docs/Campaigns_Bonus/Update_Campaigns_Bonus_Id.yml')
 def update_campaigns_bonus_id(id):
+    name = request.json['name']
     date_begin = request.json['date_begin']
     date_end = request.json['date_end']
     bonus = request.json['bonus']
     community_id = request.json['community_id']
     event_ids = request.json['event_ids']
+    status = request.json['status']
     campaigns_bonus = CAMPAIGNSBONUS.query.get(id)
 
     if not campaigns_bonus:
         return jsonify({'message': "Rule Event don't exist", 'data': {}}), 404
     if campaigns_bonus:
         try:
+            campaigns_bonus.name = name
             campaigns_bonus.date_begin = date_begin
             campaigns_bonus.date_end = date_end
             campaigns_bonus.bonus = bonus
             campaigns_bonus.community_id = community_id
             campaigns_bonus.event_ids = event_ids
+            campaigns_bonus.status = status
             db.session.commit()
             result = CampaignsBonus_schema.dump(campaigns_bonus)
             return jsonify({'message': 'successfully updated', 'data': result.data}), 201

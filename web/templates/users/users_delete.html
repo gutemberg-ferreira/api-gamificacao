@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form action='' method="post">
+    Click YES to confirm
+    <input type = "submit" value="YES" class="btn btn-danger">
+    or
+    <a href='/admin/users' class="btn btn-outline-success">Cancel</a>
+</form>
+    <br>
+<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div>
+                                <h2> Delete User ID {{ users.id }} - {{ users.name }} </h2>
+                            </div>
+                                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" value="{{ users.username }}" readonly></div>
+                                <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name" value="{{ users.name }}" readonly></div>
+                                <div class="form-group"><input class="form-control" type="text" name="email" placeholder="Email" value="{{ users.email }}" readonly></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+{% endblock %}

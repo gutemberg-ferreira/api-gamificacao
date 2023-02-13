@@ -79,3 +79,8 @@ img.circle-img.circle-img--small {
 .navbar {
 	margin-bottom: -10px;
 }
+
+.list-group-item {
+	display: inline-flex;
+	padding: 0.75rem 2.25rem;
+}

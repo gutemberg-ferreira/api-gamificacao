@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<br>
+<form action='' method="post">
+    Click YES to confirm
+    <input type = "submit" value="YES" class="btn btn-danger">
+    or
+    <a href='/admin/campaignsbonus' class="btn btn-outline-success">Cancel</a>
+</form>
+    <br>
+        <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/admin/campaignsbonus/{{ campaigns_bonus.id }}/update" method="post">
+                        <div>
+                            <h2> Delete Campaigns Bonus </h2>
+                        </div>
+                        <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name" value="{{ campaigns_bonus.name }}" required readonly></div>
+                        <div class="form-group input-group date">
+                            <input class="form-control" type="text" name="date_begin" placeholder="Date Begin" value="{{ campaigns_bonus.date_begin }}" readonly>
+                            <span class="input-group-addon" style="width: 50px;">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+
+                        <div class="form-group input-group date">
+                            <input class="form-control" type="text" name="date_end" placeholder="Date End" value="{{ campaigns_bonus.date_end }}" readonly >
+                            <span class="input-group-addon" style="width: 50px;">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            </script>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="number" step=0.01 min=0 name="bonus" placeholder="Bonus Value" value="{{ campaigns_bonus.bonus }}" required readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-control" type="number" min=0 name="community_id" placeholder="Community ID" value="{{ campaigns_bonus.community_id }}" required readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="rule_events" cols="100"
+                                      placeholder="Add Rule Events" required readonly>{{ campaigns_bonus.event_ids }}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label><input type="checkbox" name="status" {% if campaigns_bonus.status %} checked="true" {% endif %} onclick="return false;"> Is Active?</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+
+
+
+{% endblock %}

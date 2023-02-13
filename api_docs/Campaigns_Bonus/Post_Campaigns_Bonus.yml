@@ -34,6 +34,9 @@ definitions:
   CampaignsBonusAdd:
     type: "object"
     properties:
+      name:
+        type: "string"
+        example: "Bonus Carnaval"
       date_begin:
         type: "datetime"
         example: "2023-01-28 00:10:00"
@@ -50,6 +53,9 @@ definitions:
       event_ids:
         type: "string"
         example: "1,2"
+      status:
+        type: "boolean"
+        example: "true"
 
 security:
   - APIKeyHeader: []

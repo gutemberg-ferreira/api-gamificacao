@@ -14,6 +14,7 @@ template_dir = os.path.abspath('./web/templates/')
 static_dir = os.path.abspath('./web/static/')
 app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 app.config.from_object('config')
+app.config['MYSQL_CHARSET'] = 'utf8mb4'
 CORS(app)
 login_manager = LoginManager()
 swagger = Swagger(app, template_file=template)
@@ -35,6 +36,4 @@ from api.routes.router_rank import *
 from api.routes.router_auth import *
 from api.routes.router_users import *
 from api.routes.router_campaigns_bonus import *
-from api.routes.router_dash_rank import *
-from api.routes.router_home import *
 from api.routes.router_html import *

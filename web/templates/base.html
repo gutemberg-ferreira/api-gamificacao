@@ -3,19 +3,17 @@
 
 <head>
     <meta charset="utf-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>ADMIN MIT GAMIFICATION</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <!--  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -25,57 +23,87 @@
 </head>
 
 <body>
-
-<section class="hero is-fullheight">
-
-    <div class="hero-head" style="background-color:#C4FCEF;">
-        <nav class="navbar">
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-
-                <div id="navbarMenuHeroA" class="navbar-menu">
-                    <div class="navbar-end">
-                        <a href="{{ url_for('home') }}" class="navbar-item">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="{{ url_for('home') }}" class="nav-link" active aria-current="page">
                             Home
                         </a>
+                    </li>
+                    <li class="nav-item">
                         {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('dash_rank') }}" class="navbar-item">
+                        <a href="{{ url_for('dash_rank') }}" class="nav-link">
                             Ranking Nexto
                         </a>
                         {% endif %}
+                    </li>
+                    <li class="nav-item">
                         {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('rule_events_html') }}" class="navbar-item">
+                        <a href="{{ url_for('rule_events_html') }}" class="nav-link">
                             Rule Events
                         </a>
                         {% endif %}
+                    </li>
+                    <li class="nav-item">
                         {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('campaigns_bonus_html') }}" class="navbar-item">
+                        <a href="{{ url_for('campaigns_bonus_html') }}" class="nav-link">
                             Campaigns Bonus
                         </a>
                         {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('users_html') }}" class="nav-link">
+                            Users API
+                        </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
                         {% if not current_user.is_authenticated %}
-                        <a href="{{ url_for('login') }}" class="navbar-item">
+                        <a href="{{ url_for('login') }}" class="nav-link">
                             Login
                         </a>
                         {% endif %}
-
-                        <a href="/apidocs" target="_blank" class="navbar-item">
+                    </li>
+                    <li class="nav-item">
+                        <a href="/apidocs" target="_blank" class="nav-link">
                             API Documentation
                         </a>
+                    </li>
+                    <li class="nav-item">
                         {% if current_user.is_authenticated %}
-                        <a href="{{ url_for('logout') }}" class="navbar-item">
+                        <a href="{{ url_for('logout') }}" class="nav-link">
                             Logout
                         </a>
                         {% endif %}
-                    </div>
+                    </li>
+                    </ul>
                 </div>
             </div>
         </nav>
-    </div>
+
+<section class="hero is-fullheight">
     <div>
         <div class="container has-text-centered">
             {% block content %}{% endblock %}
         </div>
     </div>
 </section>
+
+    {% block footer %}
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    2023 ©
+    <a class="text-white" href="#">M.I.T. & CESAR SCHOOL</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+    {% endblock %}
 </body>
 </html>

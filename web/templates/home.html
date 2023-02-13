@@ -1,5 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-        <h1>TESTE</h1>
+    <style>
+    header{
+        background-size: cover;
+    }
+    .img-fluid {
+        max-width: 30%;
+    }
+    </style>
+    <header class="py-5 bg-image-cover" style="background-image: url('/static/img/mit_screen.jpg')">
+            <div class="text-center my-5">
+                <img class="img-fluid rounded-circle mb-2 " src="static/img/LOGO_MIT.png" alt="..." />
+            </div>
+        </header>
+
+    <div class="container p-4 pb-0">
+     <h2>EQUIPE M.I.T.</h2>
+    <section class="mb-4">
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            <img src="static/img/berg.png" class="circle-img mb-0"></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <img src="static/img/thiago.png" class="circle-img mb-0">
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <img src="static/img/alberson.png" class="circle-img mb-0">
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <img src="static/img/anna.png" class="circle-img mb-0">
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <img src="static/img/gelson.png" class="circle-img mb-0">
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <img src="static/img/willame.png" class="circle-img mb-0">
+      </a>
+    </section>
+  </div>
 {% endblock %}
