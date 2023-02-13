@@ -4,17 +4,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#campaignsbonus').DataTable({
-                ajax: '/campaignsbonus/data',
-                columns: [
-                    {data: 'id', },
-                    {data: 'date_begin', searchable: true},
-                    {data: 'date_end', orderable: false, searchable: false},
-                    {data: 'bonus', orderable: true, searchable: false},
-                    {data: 'community_id', orderable: false, searchable: false},
-                    {data: 'event_ids', orderable: true, searchable: true}
-                ],
-            });
+            $('#campaignsbonus').DataTable();
         } );
     </script>
 

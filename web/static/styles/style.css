@@ -75,3 +75,7 @@ img.circle-img.circle-img--small {
 .table tbody tr td:nth-last-child(1) {
 	border-radius: 0 5px 5px 0;
 }
+
+.navbar {
+	margin-bottom: -10px;
+}

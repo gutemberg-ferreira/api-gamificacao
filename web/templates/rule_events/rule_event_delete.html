@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form action='' method="post">
+    Click YES to confirm
+    <input type = "submit" value="YES" class="btn btn-danger">
+    or
+    <a href='/admin/ruleevents' class="btn btn-outline-success">Cancel</a>
+</form>
+    <br>
+<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div>
+                                <h2> Delete Event Rule ID {{ ruleevent.id }} - {{ ruleevent.name_event }} </h2>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="name_event" placeholder="Event Name" value="{{ruleevent.name_event}}" required readonly>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="description" cols="100" placeholder="Add a Description" required readonly>{{ruleevent.description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="score" placeholder="Score" value="{{ruleevent.score}}" required readonly>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="rule_description" cols="100" placeholder="Add a Rule Description" required readonly>{{ruleevent.rule_description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><input type="checkbox" name="status" {% if ruleevent.status %} checked="true" {% endif %} onclick="return false;"> Is Active?</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+{% endblock %}

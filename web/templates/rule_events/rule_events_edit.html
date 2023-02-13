@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/admin/ruleevents/{{ ruleevent.id }}/update" method="post">
+                            <div>
+                                <h2> Edit Event Rule ID {{ ruleevent.id }} - {{ ruleevent.name_event }} </h2>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="name_event" placeholder="Event Name" value="{{ruleevent.name_event}}" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="description" cols="100" placeholder="Add a Description" required>{{ruleevent.description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="score" placeholder="Score" value="{{ruleevent.score}}" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="rule_description" cols="100" placeholder="Add a Rule Description" required>{{ruleevent.rule_description}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label><input type="checkbox" name="status" {% if ruleevent.status %} checked="true" {% endif %}> Is Active?</label>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+{% endblock %}
