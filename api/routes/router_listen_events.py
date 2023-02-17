@@ -86,8 +86,7 @@ def delete_listen_event_id(id):
         try:
             db.session.delete(listen_event)
             db.session.commit()
-            result = listenEvent_schema(listen_event)
-            return jsonify({'message': 'successfully deleted', 'data': result.data}), 200
+            return jsonify({'message': 'successfully deleted'}), 200
         except:
             return jsonify({'message': 'unable to delete', 'data': {}}), 500
 

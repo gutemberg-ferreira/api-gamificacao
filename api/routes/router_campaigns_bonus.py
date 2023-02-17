@@ -86,8 +86,7 @@ def delete_campaigns_bonus_event_id(id):
         try:
             db.session.delete(campaigns_bonus)
             db.session.commit()
-            result = CampaignsBonus_schema.dump(campaigns_bonus)
-            return jsonify({'message': 'successfully deleted', 'data': result.data}), 200
+            return jsonify({'message': 'successfully deleted'}), 200
         except:
             return jsonify({'message': 'unable to delete', 'data': {}}), 500
 

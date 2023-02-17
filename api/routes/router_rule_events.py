@@ -60,6 +60,7 @@ def update_rule_event_id(id):
             ruler_event.description = description
             ruler_event.score = score
             ruler_event.rule_description = rule_description
+            ruler_event.status = status
             db.session.commit()
             result = ruleEvent_schema.dump(ruler_event)
             return jsonify({'message': 'successfully updated', 'data': result.data}), 201

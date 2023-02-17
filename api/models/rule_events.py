@@ -24,7 +24,7 @@ class RULEEVENTS(db.Model):
             'description': self.description,
             'score': self.score,
             'rule_description': self.rule_description,
-            'status': self.status,
+            'status': self.status
         }
 
 class RuleEventSchema(ma.Schema):
