@@ -1,5 +1,29 @@
 # API-Gamificação
 
+
+## Passos para realizar o escalonamento da aplicação)
+
+#### Realizar a instalação do Kubernetes  https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+#### Realizar a build das aplicações para gerar a imagem:
+    docker build -t api-gamificacao-database ../services/mysql/.
+    docker build -t api-gamificacao-api_gamification ../.
+
+#### cd k8s-specification/ 
+
+#### kubectl create -f namespaces/mit_gamification.yaml --save-config 
+
+#### kubectl create -f secrets.yaml --save-config
+
+#### kubectl create -f mysql-pv.yaml --save-config
+
+#### kubectl create -f mysql-pvc.yaml --save-config
+
+#### kubectl create -f deployements/ --save-config
+
+#### kubectl create -f services/ --save-config
+
+#### minikube tunnel
+
 ## Passos para Configurar o ambiente (Doc Versão 2.0)
 ### Inicialização do serviço de gamificação : 
 
@@ -56,6 +80,9 @@ Depois, rodar o comando para subir novamente:
   * <code> flask --app hello_world run </code>
   
   * acessar documentação: http://127.0.0.1:5000/apidocs
+
+
+
 
 
 

@@ -54,7 +54,7 @@ def update_campaigns_bonus_id(id):
             db.session.commit()
             result = CampaignsBonus_schema.dump(campaigns_bonus)
             return jsonify({'message': 'successfully updated', 'data': result.data}), 201
-        except:
+        except SystemExit:
             return jsonify({'message': 'unable to update', 'data': {}}), 500
 
 

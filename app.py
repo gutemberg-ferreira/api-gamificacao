@@ -16,7 +16,7 @@ app = Flask(__name__, static_folder=static_dir, template_folder=template_dir)
 app.config.from_object('config')
 app.config['MYSQL_CHARSET'] = 'utf8mb4'
 app.secret_key = 'api-gamification-2023'
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*", "send_wildcard": "True"}})
 login_manager = LoginManager()
 swagger = Swagger(app, template_file=template)
 ma = Marshmallow(app)

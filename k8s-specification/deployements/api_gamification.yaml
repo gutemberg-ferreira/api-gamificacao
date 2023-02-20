@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gamification
+  labels:
+    app: gamification
+  namespace: mit-gamification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gamification
+  template:
+    metadata:
+      labels:
+        app: gamification
+    spec:
+      containers:
+      - name: gamification
+        image: api-gamificacao-api_gamification
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 5000
+        env:
+        - name: db_root_password
+          valueFrom:
+            secretKeyRef:
+              name: gamification-secrets
+              key: db_root_password
+        - name: db
+          value: gamification_nexto

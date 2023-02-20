@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: database
+  labels:
+    app: database
+  namespace: mit-gamification
+spec:
+  ports:
+  - port: 3306
+    protocol: TCP
+    name: database
+  selector:
+    app: database
+  type: NodePort

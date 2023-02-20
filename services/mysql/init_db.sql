@@ -1,4 +1,4 @@
-
+CREATE DATABASE IF NOT EXISTS gamification_nexto;
 USE gamification_nexto;
 ALTER DATABASE gamification_nexto DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
