@@ -4,4 +4,5 @@ __pycache__/
 config.ini
 /.pytest_cache
 /.scannerwork
-.coveragerc
+/coverage-reports
+.coverage

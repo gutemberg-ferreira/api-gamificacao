@@ -55,7 +55,7 @@ definitions:
         example: "1,2"
       status:
         type: "boolean"
-        example: "true"
+        example: true
 
 security:
   - APIKeyHeader: []
