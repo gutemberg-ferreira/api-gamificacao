@@ -1,0 +1,1171 @@
+{
+	"info": {
+		"_postman_id": "a3de07c9-f5c5-4fcd-8554-8bf700fea8e9",
+		"name": "Gamification",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9714133"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"token\",data.token);",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "username",
+								"value": "test",
+								"type": "text"
+							},
+							{
+								"key": "password",
+								"value": "test123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/auth",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rule Events",
+			"item": [
+				{
+					"name": "addRuleEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"id_new_rule_event\",data.data.id);",
+									"",
+									"",
+									"",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"Login no aplicativo T\",\n    \"name_event\": \"login diário no aplicativo T \",\n    \"rule_description\": \"será pontuado diariamente o login na aplicação T\",\n    \"score\": 100,\n    \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/addRuleEvent",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"addRuleEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRuleEventId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\n            \"description\": \"\",\n            \"name_event\": \"\",\n            \"rule_description\": \"\",\n            \"score\": 500,\n            \"status\": true\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/updateRuleEventId/{{id_new_rule_event}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"updateRuleEventId",
+								"{{id_new_rule_event}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRuleEventId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/getRuleEventId/{{id_new_rule_event}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"getRuleEventId",
+								"{{id_new_rule_event}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRuleEventId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/deleteRuleEventId/{{id_new_rule_event}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"deleteRuleEventId",
+								"{{id_new_rule_event}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allEvents",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/allEvents",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"allEvents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Listen Events",
+			"item": [
+				{
+					"name": "addListenEvent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"id_new_listen_event\",data.data.id);",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"event_date\": \"2023-01-28 10:24:00\",\n  \"event_id\": 1,\n  \"community_id\": 3,\n  \"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/addListenEvent",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"addListenEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateListenEventId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"event_date\": \"2023-01-28 10:22:00\",\n  \"event_id\": 2,\n  \"community_id\": 2,\n  \"user_id\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/updateListenEventId/{{id_new_listen_event}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"updateListenEventId",
+								"{{id_new_listen_event}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getListenEventId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/getListenEventId/{{id_new_listen_event}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"getListenEventId",
+								"{{id_new_listen_event}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteListenEventId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/deleteListenEventId/{{id_new_listen_event}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"deleteListenEventId",
+								"{{id_new_listen_event}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allListen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/allListen",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"allListen"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Campaigns Bonus",
+			"item": [
+				{
+					"name": "addCampaignsBonus",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"id_new_campaigns_bonus\",data.data.id);",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Campanha Teste\",\n  \"bonus\": 1.5,\n  \"community_id\": 1,\n  \"date_begin\": \"2023-01-28 00:10:00\",\n  \"date_end\": \"2023-01-28 00:10:00\",\n  \"event_ids\": \"1,2\",\n  \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/addCampaignsBonus",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"addCampaignsBonus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCampaignsBonusId​",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Campanha Teste EDITADO\",\n  \"bonus\": 2.5,\n  \"community_id\": 1,\n  \"date_begin\": \"2023-01-28 00:10:00\",\n  \"date_end\": \"2023-01-28 00:10:00\",\n  \"event_ids\": \"1,2\",\n  \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/updateCampaignsBonusId/{{id_new_campaigns_bonus}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"updateCampaignsBonusId",
+								"{{id_new_campaigns_bonus}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCampaignsBonusId/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/getCampaignsBonusId/{{id_new_campaigns_bonus}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"getCampaignsBonusId",
+								"{{id_new_campaigns_bonus}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCampaignsBonusId/{id}",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/deleteCampaignsBonusId/{{id_new_campaigns_bonus}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"deleteCampaignsBonusId",
+								"{{id_new_campaigns_bonus}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allCampaignsBonus",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/allCampaignsBonus",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"allCampaignsBonus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "addUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"pm.environment.set(\"id_new_users\",data.data.id);",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test2@mit.test.com\",\n  \"name\": \"Tester2\",\n  \"password\": \"test123\",\n  \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/addUser",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"addUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@mit.test.com EDITADO\",\n  \"name\": \"Tester EDITADO\",\n  \"password\": \"test123\",\n  \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/updateUserID/{{id_new_users}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"updateUserID",
+								"{{id_new_users}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/getUserID/{{id_new_users}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"getUserID",
+								"{{id_new_users}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserId",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/deleteUserID/{{id_new_users}}",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"deleteUserID",
+								"{{id_new_users}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/all",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ranking",
+			"item": [
+				{
+					"name": "rankingAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/rankingAll",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"rankingAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userScoreByCommunity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/userScoreByCommunity/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"userScoreByCommunity",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userScoreTotal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/userScoreTotal/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"userScoreTotal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScoreByCommunity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/ScoreByCommunity/3",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"ScoreByCommunity",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"Inicialização dos Testes de API\")",
+					"console.log(\"API GAMIFICATION NEXTO\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "api_url",
+			"value": "localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "id_new_rule_event",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "id_new_listen_event",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "id_new_campaigns_bonus",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "id_new_users",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
